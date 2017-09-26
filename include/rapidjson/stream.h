@@ -137,7 +137,13 @@ public:
     void Flush() { is_.Flush(); }
     size_t PutEnd(Ch* ch) { return is_.PutEnd(ch); }	
     
+    // wrapper for MemoryStream
     const Ch* Peek4() const { return is_.Peek4(); }
+    
+    // wrapper for AutoUTFInputStream
+    UTFType GetType() const { return is_.GetType(); }
+    bool HasBOM() const { return is_.HasBOM(); }
+
 private:
     InputStream& is_;
 };

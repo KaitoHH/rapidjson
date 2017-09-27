@@ -109,6 +109,12 @@ inline void PutN(Stream& stream, Ch c, size_t n) {
     \tmessage to the origin stream. 
     \note implements Stream concept
 */
+
+#if defined(_MSC_VER) && _MSC_VER <= 1700
+RAPIDJSON_DIAG_PUSH
+RAPIDJSON_DIAG_OFF(4702)  // disable unreachable code
+#endif
+
 template <typename InputStream, typename Encoding>
 class GenericStreamWrapper {
 public:
@@ -152,6 +158,10 @@ private:
     GenericStreamWrapper& operator=(const GenericStreamWrapper &);
     GenericStreamWrapper(const GenericStreamWrapper&);
 };
+
+#if defined(_MSC_VER) && _MSC_VER <= 1700
+RAPIDJSON_DIAG_POP
+#endif
 
 ///////////////////////////////////////////////////////////////////////////////
 // StringStream
